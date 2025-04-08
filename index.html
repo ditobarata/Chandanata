@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="jv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chandanata - Papan Kawruh MQTT</title>
+  <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+  <script src="app.js" defer></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2em;
+      background: #fefae0;
+      color: #333;
+    }
+    h1 {
+      color: #bc6c25;
+    }
+    #messages {
+      border: 1px solid #ccc;
+      padding: 1em;
+      margin-top: 1em;
+      background: #fff;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌾 Chandanata</h1>
+  <p>Dashboard that communicate directly to the server using MQTT</p>
+  <div id="messages">Loading data...</div>
+</body>
+</html>
