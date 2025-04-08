@@ -12,7 +12,7 @@ client.on("connect", () => {
   console.log("🔌 Sambung menyang broker MQTT");
   client.subscribe(topic, (err) => {
     if (!err) {
-      console.log("📡 Ngleboni topik:", topic);
+      console.log("📡 Entering Topic:", topic);
     }
   });
 });
