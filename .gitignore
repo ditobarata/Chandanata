@@ -1,0 +1,11 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# VSCode
+.vscode/
+
+# Node (kalau nanti frontend pakai npm)
+node_modules/
+dist/
