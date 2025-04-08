@@ -1,25 +1,27 @@
-// Koneksi ke broker MQTT over WebSocket
-const broker = "wss://test.mosquitto.org:8081";
-const topic = "chandanata/tes";
-
-// Buat koneksi client MQTT
+// app.js
+const broker = 'wss://test.mosquitto.org:8081/mqtt';
 const client = mqtt.connect(broker);
 
-const messagesDiv = document.getElementById("messages");
+// Saat konek, kirim permintaan ke publisher
+client.on('connect', function () {
+    console.log('✅ Terhubung ke broker MQTT');
 
-// Saat konek sukses
-client.on("connect", () => {
-  console.log("🔌 Sambung menyang broker MQTT");
-  client.subscribe(topic, (err) => {
-    if (!err) {
-      console.log("📡 Entering Topic:", topic);
-    }
-  });
+    // Kirim sinyal permintaan HTML
+    client.publish('chandanata/request', 'minta_html');
+
+    // Subscribe untuk menerima HTML
+    client.subscribe('chandanata/html', function (err) {
+        if (!err) {
+            console.log('📡 Menunggu HTML...');
+        }
+    });
 });
 
-// Saat nerima pesan
-client.on("message", (topic, message) => {
-  const msg = message.toString();
-  console.log(`📥 [${topic}]: ${msg}`);
-  messagesDiv.innerHTML += `<div><strong>${topic}:</strong> ${msg}</div>`;
+// Saat menerima HTML
+client.on('message', function (topic, message) {
+    if (topic === 'chandanata/html') {
+        // Tampilkan ke halaman
+        document.getElementById('content').innerHTML = message.toString();
+        console.log('📨 HTML diterima dan ditampilkan');
+    }
 });
