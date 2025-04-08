@@ -1,5 +1,5 @@
 // app.js
-const broker = 'wss://test.mosquitto.org:8081/mqtt';
+const broker = 'wss://broker.hivemq.com:8884/mqtt';
 const client = mqtt.connect(broker);
 
 // Saat konek, kirim permintaan ke publisher
