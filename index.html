@@ -3,30 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Chandanata - Dashboar via MQTT</title>
+  <title>Chandanata - Dashboard via MQTT</title>
+  <link rel="stylesheet" href="style.css" />
   <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
   <script src="app.js" defer></script>
-  <style>
-    body {
-      font-family: sans-serif;
-      padding: 2em;
-      background: #fefae0;
-      color: #333;
-    }
-    h1 {
-      color: #bc6c25;
-    }
-    #messages {
-      border: 1px solid #ccc;
-      padding: 1em;
-      margin-top: 1em;
-      background: #fff;
-    }
-  </style>
 </head>
 <body>
   <h1>Dashboard Chandanata</h1>
-  <div id="content">Menunggu konten dari MQTT...</div>
-  
+
+  <div id="spinner">
+    <p>⏳ Memuat data...</p>
+    <div class="loader"></div>
+  </div>
+
+  <div id="content">
+    <!-- HTML dari publisher.py akan muncul di sini -->
+  </div>
 </body>
 </html>
