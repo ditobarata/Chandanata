@@ -1,6 +1,8 @@
 // app.js
 const broker = 'wss://broker.hivemq.com:8884/mqtt';
-const client = mqtt.connect(broker);
+const clientId = "webclient_" + Math.random().toString(16).substr(2, 8);
+const client = mqtt.connect(broker, { clientId: clientId });
+
 
 // Saat konek, kirim permintaan ke publisher
 client.on('connect', function () {
@@ -8,6 +10,7 @@ client.on('connect', function () {
 
     // Kirim sinyal permintaan HTML
     client.publish('chandanata/request', 'minta_html');
+    console.log("📤 Permintaan HTML dikirim ke broker");
 
     // Subscribe untuk menerima HTML
     client.subscribe('chandanata/html', function (err) {
